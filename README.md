@@ -11,7 +11,7 @@ Review previously saved mood entries, including the mood and the date and time e
 
 View your average mood, total logged entries, and the breakdown across five mood levels.
 
-![Mood Tracker - Stats screen](screenshots/mood-stats.png)
+![Mood Tracker - Stats screen](screenshots/mood-status.png)
 > **Screenshot setup:** Create a `screenshots` folder in the project root and add your screenshots using the filenames shown above. If you store screenshots elsewhere, update the image paths in this README.
 Features
 Daily mood check-in: Select one of five mood levels:
