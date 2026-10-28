@@ -8,7 +8,9 @@ Choose how you feel today, add an optional note, and save your mood entry. The s
 Review previously saved mood entries, including the mood and the date and time each entry was logged.
 ![Mood Tracker - History screen](screenshots/mood-history.png)
 3. Mood Statistics
-View your average mood, the number of logged entries, and a breakdown of entries across the five mood levels.
+
+View your average mood, total logged entries, and the breakdown across five mood levels.
+
 ![Mood Tracker - Stats screen](screenshots/mood-stats.png)
 > **Screenshot setup:** Create a `screenshots` folder in the project root and add your screenshots using the filenames shown above. If you store screenshots elsewhere, update the image paths in this README.
 Features
