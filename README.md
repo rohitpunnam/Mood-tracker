@@ -9,6 +9,19 @@ Review previously saved mood entries, including the mood and the date and time e
 ![Mood Tracker - History screen](screenshots/mood-history.png)
 3. Mood Statistics
 
+
+4. Dark Mode Support
+
+Mood Tracker supports both Light Mode and Dark Mode, allowing users to choose their preferred appearance.
+
+- **Light Mode:** Provides a clean and comfortable interface for daytime use.
+- **Dark Mode:** Offers a darker interface for comfortable viewing in low-light environments.
+- **Easy Switching:** Users can switch between Light and Dark Mode using the theme toggle icon in the app bar.
+- **Dynamic Theme:** The theme automatically updates across the Log, History, and Stats screens.
+
+**Dark Mode Preview**
+
+![Mood Tracker Dark Mode](screenshots/mood-dark-mode.png)
 View your average mood, total logged entries, and the breakdown across five mood levels.
 
 ![Mood Tracker - Stats screen](screenshots/mood-status.png)
