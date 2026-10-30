@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 import 'mood_provider.dart';
 import 'quote_service.dart';
+import 'theme_provider.dart';
 
 void main() {
   runApp(const MoodApp());
@@ -23,27 +24,56 @@ class MoodApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => MoodProvider(),
-      child: MaterialApp(
-        title: 'Mood Tracker',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          colorSchemeSeed: Colors.teal,
-          useMaterial3: true,
-          cardTheme: const CardThemeData(
-            elevation: 1,
-          ),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => MoodProvider(),
         ),
-        home: const HomeShell(),
-        routes: {
-          '/history': (_) => const HistoryRoute(),
-          '/stats': (_) => const StatsRoute(),
+        ChangeNotifierProvider(
+          create: (_) => ThemeProvider(),
+        ),
+      ],
+      child: Consumer<ThemeProvider>(
+        builder: (context, themeProvider, child) {
+          return MaterialApp(
+            title: 'Mood Tracker',
+            debugShowCheckedModeBanner: false,
+
+            // Light Theme
+            theme: ThemeData(
+              colorSchemeSeed: Colors.teal,
+              brightness: Brightness.light,
+              useMaterial3: true,
+              cardTheme: const CardThemeData(
+                elevation: 1,
+              ),
+            ),
+
+            // Dark Theme
+            darkTheme: ThemeData(
+              colorSchemeSeed: Colors.teal,
+              brightness: Brightness.dark,
+              useMaterial3: true,
+              cardTheme: const CardThemeData(
+                elevation: 1,
+              ),
+            ),
+
+            themeMode: themeProvider.themeMode,
+
+            home: const HomeShell(),
+
+            routes: {
+              '/history': (_) => const HistoryRoute(),
+              '/stats': (_) => const StatsRoute(),
+            },
+          );
         },
       ),
     );
   }
 }
+
 
 // Main shell with bottom navigation.
 class HomeShell extends StatefulWidget {
@@ -60,13 +90,37 @@ class _HomeShellState extends State<HomeShell> {
   Widget build(BuildContext context) {
     const titles = ['Mood Tracker', 'History', 'Stats'];
 
+    final isDarkMode =
+        context.watch<ThemeProvider>().isDarkMode;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(titles[_index]),
+
         actions: [
+          // Light / Dark Mode Toggle
+          IconButton(
+            tooltip: isDarkMode
+                ? 'Switch to Light Mode'
+                : 'Switch to Dark Mode',
+
+            icon: Icon(
+              isDarkMode
+                  ? Icons.light_mode
+                  : Icons.dark_mode,
+            ),
+
+            onPressed: () {
+              context.read<ThemeProvider>().toggleTheme();
+            },
+          ),
+
+          // Existing Navigation Menu
           PopupMenuButton<String>(
             tooltip: 'Open screen',
-            onSelected: (route) => Navigator.pushNamed(context, route),
+            onSelected: (route) =>
+                Navigator.pushNamed(context, route),
+
             itemBuilder: (_) => const [
               PopupMenuItem(
                 value: '/history',
@@ -80,6 +134,7 @@ class _HomeShellState extends State<HomeShell> {
           ),
         ],
       ),
+
       body: IndexedStack(
         index: _index,
         children: const [
@@ -88,11 +143,14 @@ class _HomeShellState extends State<HomeShell> {
           StatsPage(),
         ],
       ),
+
       bottomNavigationBar: NavigationBar(
         selectedIndex: _index,
+
         onDestinationSelected: (index) {
           setState(() => _index = index);
         },
+
         destinations: const [
           NavigationDestination(
             icon: Icon(Icons.add_reaction_outlined),
