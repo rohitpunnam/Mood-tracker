@@ -4,39 +4,38 @@ A simple, calming mood-tracking application built with Flutter. Mood Tracker hel
 
 ## Screenshots
 
- 1. Log Mood
+ ## Screenshots
+
+### 1. Log Mood
 
 Choose how you feel today, add an optional note, and save your mood entry. The screen also displays a motivational quote.
 
 ![Mood Tracker - Log screen](screenshots/mood-log.png)
 
-2. Mood History
+### 2. Mood History
 
 Review previously saved mood entries, including the mood and the date and time each entry was logged.
 
 ![Mood Tracker - History screen](screenshots/mood-history.png)
 
- 3. Mood Statistics
+### 3. Mood Statistics
 
 View your average mood, total logged entries, and the breakdown across five mood levels.
 
 ![Mood Tracker - Stats screen](screenshots/mood-stats.png)
 
- 4. Dark Mode Support
+### 4. Dark Mode Support
 
 Mood Tracker supports both Light Mode and Dark Mode, allowing users to choose their preferred appearance.
 
-- **Light Mode:** Provides a clean and comfortable interface for daytime use.
-- **Dark Mode:** Offers a darker interface for comfortable viewing in low-light environments.
-- **Easy Switching:** Users can switch between Light and Dark Mode using the theme toggle icon in the app bar.
-- **Dynamic Theme:** The theme automatically updates across the Log, History, and Stats screens.
+- **Light Mode:** Provides a clean interface for daytime use.
+- **Dark Mode:** Offers a darker interface for low-light environments.
+- **Easy Switching:** Switch between modes using the theme toggle icon.
+- **Dynamic Theme:** The theme updates across the Log, History, and Stats screens.
 
 **Dark Mode Preview**
 
 ![Mood Tracker Dark Mode](screenshots/mood-dark-mode.png)
-
- Features
-
 - **Daily mood check-in:** Select one of five mood levels:
   - 😭 Awful
   - 🙁 Bad
